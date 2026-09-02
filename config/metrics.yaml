@@ -1,0 +1,67 @@
+# Pipeline configuration: what to monitor and how sensitive to be.
+#
+# Every metric maps to one file in sql/metrics/. A query must return a
+# `date_trunc` column, one `<segment>_<metric>` column per segment and a
+# `total_<metric>` column — the loader derives everything else from that.
+
+output:
+  schema: analytics
+  total_table: total_anomaly
+  segment_table: segment_anomaly
+
+detection:
+  # Prophet fit
+  seasonality_mode: multiplicative
+  changepoint_prior_scale: 20
+  interval_width: 0.95
+  # Guard rails
+  min_history_points: 30      # refuse to fit on shorter history
+  segment_baseline_days: 30   # window the segment breakdown compares against
+
+metrics:
+  - name: new_users
+    query: new_users.sql
+    grain: daily
+    title: New registrations
+
+  - name: activations
+    query: activations.sql
+    grain: daily
+    title: Activations
+
+  - name: cv_7d
+    query: cv_7d.sql
+    grain: daily
+    title: 7-day registration-to-activation conversion
+
+  - name: returning_users
+    query: returning_users.sql
+    grain: daily
+    title: Returning users
+
+  - name: guest_users
+    query: guest_users.sql
+    grain: daily
+    title: Guest sessions
+
+  # Weekly metrics are only evaluated on the first day of the week, when a
+  # complete new data point exists.
+  - name: s2_retention_14d
+    query: s2_retention_14d.sql
+    grain: weekly
+    title: Second-session retention, 14d
+
+  - name: lifetime_30d
+    query: lifetime_30d.sql
+    grain: weekly
+    title: Average sessions per user, 30d
+
+# A metric can pin a fixed band instead of the model interval, e.g.:
+#
+#   - name: cv_7d
+#     query: cv_7d.sql
+#     grain: daily
+#     bounds:
+#       type: const      # 'interval' (default) uses Prophet's yhat_lower/upper
+#       lower: 0.35
+#       upper: 0.55

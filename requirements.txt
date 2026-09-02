@@ -1,0 +1,13 @@
+# Runtime dependencies of the pipeline.
+pandas>=2.0
+numpy>=1.24
+PyYAML>=6.0
+prophet>=1.1.5
+matplotlib>=3.7
+seaborn>=0.13
+psycopg2-binary>=2.9
+python-telegram-bot>=21.0
+
+# Only needed when the pipeline runs inside Airflow; the standalone CLI
+# connects through ANOMALY_DATABASE_URL instead.
+# apache-airflow-providers-postgres>=5.10

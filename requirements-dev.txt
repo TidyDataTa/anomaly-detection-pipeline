@@ -1,0 +1,9 @@
+# Lint and test dependencies. Deliberately excludes prophet: the test suite
+# stubs the forecast so CI stays fast and deterministic.
+pandas>=2.0
+numpy>=1.24
+PyYAML>=6.0
+matplotlib>=3.7
+seaborn>=0.13
+pytest>=8.0
+ruff>=0.5

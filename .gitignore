@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.venv-*/
+venv/
+*.egg-info/
+build/
+dist/
+
+# Secrets & local config
+.env
+*.pem
+
+# Pipeline output
+*.png
+!docs/*.png
+plot.png
+charts/
+
+# Tooling
+.pytest_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+.DS_Store
+.idea/
+.vscode/
