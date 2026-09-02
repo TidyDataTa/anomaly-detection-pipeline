@@ -2,7 +2,7 @@
 
 **A production Airflow pipeline that watches core product metrics, catches the days they break, and tells you which user segment caused it — before anyone opens a dashboard.**
 
-[![CI](https://github.com/USERNAME/anomaly-detection-pipeline/actions/workflows/ci.yml/badge.svg)](https://github.com/USERNAME/anomaly-detection-pipeline/actions/workflows/ci.yml)
+[![CI](https://github.com/TidyDataTa/anomaly-detection-pipeline/actions/workflows/ci.yml/badge.svg)](https://github.com/TidyDataTa/anomaly-detection-pipeline/actions/workflows/ci.yml)
 [![Python](https://img.shields.io/badge/python-3.10%20|%203.11%20|%203.12-blue.svg)](https://www.python.org/)
 [![Prophet](https://img.shields.io/badge/model-Prophet-4C78A8.svg)](https://facebook.github.io/prophet/)
 [![Airflow](https://img.shields.io/badge/orchestration-Airflow-017CEE.svg)](https://airflow.apache.org/)
@@ -86,7 +86,7 @@ flowchart LR
 ## Quick start
 
 ```bash
-git clone https://github.com/USERNAME/anomaly-detection-pipeline.git
+git clone https://github.com/TidyDataTa/anomaly-detection-pipeline.git
 cd anomaly-detection-pipeline
 
 python -m venv .venv && source .venv/bin/activate
